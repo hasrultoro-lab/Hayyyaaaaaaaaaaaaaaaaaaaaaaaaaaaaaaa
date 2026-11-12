@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ENGLISH GRAMMAR EXAMINATION — Basic English Grammar Assessment</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Base & Typography */
+    :root {
+      --navy-dark: #0F2544;
+      --navy-mid: #1E3A5F;
+      --navy-light: #F0F4F8;
+      --border-gray: #D1D9E2;
+      --text-main: #111827;
+      --text-muted: #4B5563;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FFFFFF;
+      color: var(--text-main);
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .navy-bg {
+      background-color: var(--navy-dark);
+    }
+    .navy-mid-bg {
+      background-color: var(--navy-mid);
+    }
+    .navy-text {
+      color: var(--navy-dark);
+    }
+    .navy-border {
+      border-color: var(--navy-dark);
+    }
+
+    /* Custom Scrollbar for Navigation Grid */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F3F4F6;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+
+    /* Print Styles for Teacher Review Dashboard */
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        font-size: 11pt;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .print-only {
+        display: block !important;
+      }
+      .print-break-inside-avoid {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .shadow-sm, .shadow, .shadow-md, .shadow-lg {
+        box-shadow: none !important;
+      }
+      .border {
+        border-color: #CBD5E1 !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-white text-gray-900">
+
+  <!-- Top Institutional Header -->
+  <header class="navy-bg text-white border-b border-slate-800 no-print">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+      <div>
+        <h1 class="text-lg sm:text-xl font-bold tracking-wide uppercase">ENGLISH GRAMMAR EXAMINATION</h1>
+        <p class="text-xs sm:text-sm text-slate-300">Basic English Grammar Assessment</p>
+      </div>
+      <div id="header-meta" class="text-xs sm:text-sm text-slate-200 hidden">
+        <span id="header-student-info" class="font-medium"></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Application Container -->
+  <main class="flex-grow max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-10">
+
+    <!-- ===================================================================== -->
+    <!-- PAGE 1: STUDENT REGISTRATION                                          -->
+    <!-- ===================================================================== -->
+    <section id="page-registration" class="max-w-xl mx-auto">
+      <div class="bg-white border border-gray-300 rounded-lg p-6 sm:p-8 shadow-sm">
+        <div class="border-b border-gray-200 pb-4 mb-6">
+          <span class="inline-block text-xs font-semibold uppercase tracking-wider text-slate-600 bg-slate-100 px-2.5 py-1 rounded mb-2">
+            Candidate Registration
+          </span>
+          <h2 class="text-2xl font-bold navy-text">Student Identification</h2>
+          <p class="text-sm text-gray-600 mt-1">
+            Please enter your details carefully before starting the examination.
+          </p>
+        </div>
+
+        <!-- Exam Rules Summary -->
+        <div class="bg-slate-50 border border-slate-200 rounded-md p-4 mb-6 text-sm text-gray-700 space-y-1.5">
+          <p class="font-semibold navy-text">Examination Overview:</p>
+          <ul class="list-disc list-inside space-y-1 text-gray-600">
+            <li><strong>Total Questions:</strong> 40 Questions (30 Multiple Choice, 10 Translation)</li>
+            <li><strong>Duration:</strong> 90 Minutes (01:30:00)</li>
+            <li><strong>Auto-Submission:</strong> Answers lock automatically when time expires.</li>
+            <li><strong>Evaluation:</strong> Manual review by your English tutor.</li>
+          </ul>
+        </div>
+
+        <!-- Validation Error Box -->
+        <div id="reg-error" class="hidden mb-4 p-3 rounded border border-red-300 bg-red-50 text-red-800 text-sm font-medium">
+          Please enter your Full Name before starting the examination.
+        </div>
+
+        <form id="registration-form" class="space-y-5" novalidate>
+          <div>
+            <label for="student-name" class="block text-sm font-semibold text-gray-800 mb-1.5">
+              Full Name <span class="text-red-600">*</span>
+            </label>
+            <input
+              type="text"
+              id="student-name"
+              name="studentName"
+              required
+              autocomplete="name"
+              placeholder="Enter your full name"
+              class="w-full px-3.5 py-2.5 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#0F2544] focus:border-[#0F2544]"
+            />
+          </div>
+
+          <div>
+            <label for="student-class" class="block text-sm font-semibold text-gray-800 mb-1.5">
+              Class <span class="text-gray-400 font-normal">(Optional)</span>
+            </label>
+            <input
+              type="text"
+              id="student-class"
+              name="studentClass"
+              placeholder="e.g., Basic A / Grade 10 / Evening Class"
+              class="w-full px-3.5 py-2.5 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#0F2544] focus:border-[#0F2544]"
+            />
+          </div>
+
+          <div>
+            <label for="exam-date" class="block text-sm font-semibold text-gray-800 mb-1.5">
+              Date of Examination
+            </label>
+            <input
+              type="text"
+              id="exam-date"
+              name="examDate"
+              readonly
+              class="w-full px-3.5 py-2.5 border border-gray-200 bg-gray-100 rounded-md text-gray-700 cursor-not-allowed font-medium"
+            />
+          </div>
+
+          <div class="pt-2">
+            <button
+              type="submit"
+              id="btn-start-exam"
+              class="w-full py-3 px-5 navy-bg hover:bg-[#1E3A5F] text-white font-semibold text-sm tracking-wide uppercase rounded-md transition-colors cursor-pointer"
+            >
+              START EXAMINATION
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- PAGE 2: EXAMINATION DASHBOARD                                         -->
+    <!-- ===================================================================== -->
+    <section id="page-exam" class="hidden">
+      <!-- 5-Minute Warning Banner -->
+      <div id="timer-warning-banner" class="hidden mb-5 p-3.5 rounded-md border border-amber-400 bg-amber-50 text-amber-900 text-sm font-semibold flex items-center justify-between">
+        <span>WARNING: Less than 5 minutes remaining. Please review and submit your answers before time expires.</span>
+      </div>
+
+      <!-- Sticky Exam Status Bar -->
+      <div class="bg-white border border-gray-300 rounded-lg p-4 mb-6 shadow-sm sticky top-2 z-20">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <!-- Candidate Info & Progress -->
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <div>
+              <span class="text-xs uppercase tracking-wider text-gray-500 block">Candidate</span>
+              <span id="exam-display-name" class="font-bold text-gray-900 text-sm sm:text-base"></span>
+              <span id="exam-display-class" class="text-xs text-gray-600 ml-1"></span>
+            </div>
+            <div class="h-8 w-px bg-gray-200 hidden sm:block"></div>
+            <div>
+              <span class="text-xs uppercase tracking-wider text-gray-500 block">Progress</span>
+              <span id="exam-progress-text" class="font-bold navy-text text-sm sm:text-base">0 / 40 Answered</span>
+            </div>
+          </div>
+
+          <!-- Countdown Timer & Review Action -->
+          <div class="flex items-center justify-between sm:justify-end gap-4">
+            <div class="bg-slate-100 border border-slate-300 rounded-md px-3.5 py-1.5 text-right">
+              <span class="text-[11px] uppercase tracking-wider text-gray-500 block">Time Remaining</span>
+              <span id="exam-timer" class="font-mono font-bold text-lg sm:text-xl navy-text">01:30:00</span>
+            </div>
+            <button
+              type="button"
+              id="btn-open-review-modal"
+              class="py-2.5 px-4 navy-bg hover:bg-[#1E3A5F] text-white text-xs sm:text-sm font-semibold rounded-md transition-colors cursor-pointer"
+            >
+              Review &amp; Submit
+            </button>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="w-full bg-gray-200 h-1.5 rounded-full mt-3 overflow-hidden">
+          <div id="exam-progress-bar" class="navy-bg h-1.5 transition-all duration-200" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Main Exam Layout: Question Area + Question Navigator -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+
+        <!-- Left / Center: Active Question Workspace (8 cols on lg) -->
+        <div class="lg:col-span-8 bg-white border border-gray-300 rounded-lg p-5 sm:p-7 shadow-sm">
+          <!-- Section & Question Header -->
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-4 mb-5 border-b border-gray-200">
+            <div>
+              <span id="question-section-badge" class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-slate-100 navy-text">
+                PART A — MULTIPLE CHOICE
+              </span>
+              <p id="question-topic-subtitle" class="text-xs text-gray-500 mt-1.5"></p>
+            </div>
+            <span id="question-number-label" class="text-sm font-bold text-gray-700">
+              Question 1 of 40
+            </span>
+          </div>
+
+          <!-- Question Prompt Container -->
+          <div id="question-container" class="min-h-[240px]">
+            <!-- Dynamically injected question content -->
+          </div>
+
+          <!-- Bottom Previous / Next Navigation Controls -->
+          <div class="mt-8 pt-5 border-t border-gray-200 flex items-center justify-between gap-3">
+            <button
+              type="button"
+              id="btn-prev-question"
+              class="px-4 py-2.5 border border-gray-300 rounded-md text-sm font-semibold text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed cursor-pointer"
+            >
+              &larr; Previous
+            </button>
+
+            <button
+              type="button"
+              id="btn-clear-answer"
+              class="px-3 py-2 text-xs font-medium text-gray-500 hover:text-gray-800 underline cursor-pointer"
+            >
+              Clear Answer
+            </button>
+
+            <button
+              type="button"
+              id="btn-next-question"
+              class="px-5 py-2.5 navy-bg hover:bg-[#1E3A5F] text-white rounded-md text-sm font-semibold cursor-pointer"
+            >
+              Next &rarr;
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Question Navigation Panel (4 cols on lg) -->
+        <aside class="lg:col-span-4 bg-white border border-gray-300 rounded-lg p-5 shadow-sm">
+          <div class="flex items-center justify-between pb-3 mb-3 border-b border-gray-200">
+            <h3 class="text-sm font-bold uppercase tracking-wider navy-text">Question Navigator</h3>
+          </div>
+
+          <!-- Legend -->
+          <div class="flex flex-wrap items-center gap-4 text-xs text-gray-600 mb-4">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3.5 h-3.5 rounded-sm navy-bg inline-block"></span>
+              <span>Answered</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3.5 h-3.5 rounded-sm bg-white border border-gray-300 inline-block"></span>
+              <span>Unanswered</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3.5 h-3.5 rounded-sm border-2 border-[#0F2544] bg-slate-100 inline-block"></span>
+              <span>Current</span>
+            </div>
+          </div>
+
+          <!-- Part A Grid (1-30) -->
+          <div class="mb-4">
+            <p class="text-xs font-semibold text-gray-700 mb-2">Part A: Multiple Choice (1–30)</p>
+            <div id="nav-grid-part-a" class="grid grid-cols-6 sm:grid-cols-10 lg:grid-cols-6 gap-1.5"></div>
+          </div>
+
+          <!-- Part B Grid (31-40) -->
+          <div class="mb-5">
+            <p class="text-xs font-semibold text-gray-700 mb-2">Part B: Translation (31–40)</p>
+            <div id="nav-grid-part-b" class="grid grid-cols-5 gap-1.5"></div>
+          </div>
+
+          <button
+            type="button"
+            id="btn-sidebar-review"
+            class="w-full py-2.5 px-4 border-2 navy-border navy-text hover:bg-slate-50 font-semibold text-xs uppercase tracking-wider rounded-md transition-colors cursor-pointer"
+          >
+            Review All Answers
+          </button>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- PRE-SUBMISSION REVIEW MODAL                                           -->
+    <!-- ===================================================================== -->
+    <div id="review-modal" class="hidden fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
+      <div class="bg-white border border-gray-300 rounded-lg max-w-2xl w-full max-h-[90vh] flex flex-col shadow-lg">
+        <div class="p-5 border-b border-gray-200 flex items-center justify-between">
+          <div>
+            <h3 class="text-lg font-bold navy-text">Review Before Final Submission</h3>
+            <p class="text-xs text-gray-600 mt-0.5">Click any question number below to return and edit your answer before submitting.</p>
+          </div>
+          <button type="button" id="btn-close-modal" class="text-gray-500 hover:text-gray-800 text-xl font-bold px-2 cursor-pointer">&times;</button>
+        </div>
+
+        <div class="p-5 overflow-y-auto space-y-4">
+          <div class="bg-slate-50 border border-slate-200 rounded p-3.5 flex flex-wrap justify-between gap-2 text-sm">
+            <span><strong>Answered:</strong> <span id="modal-answered-count" class="navy-text font-bold">0</span> / 40</span>
+            <span><strong>Unanswered:</strong> <span id="modal-unanswered-count" class="text-amber-700 font-bold">40</span></span>
+          </div>
+
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Part A — Multiple Choice (1–30)</p>
+            <div id="modal-grid-a" class="grid grid-cols-6 sm:grid-cols-10 gap-1.5"></div>
+          </div>
+
+          <div>
+            <p class="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Part B — Translation (31–40)</p>
+            <div id="modal-grid-b" class="grid grid-cols-5 sm:grid-cols-10 gap-1.5"></div>
+          </div>
+
+          <p class="text-xs text-gray-600 pt-2">
+            Once you click <strong>FINAL SUBMIT EXAMINATION</strong>, your answers will be permanently locked and cannot be modified.
+          </p>
+        </div>
+
+        <div class="p-4 border-t border-gray-200 bg-gray-50 flex flex-col sm:flex-row justify-end gap-3 rounded-b-lg">
+          <button
+            type="button"
+            id="btn-cancel-submit"
+            class="px-4 py-2.5 border border-gray-300 bg-white rounded-md text-sm font-semibold text-gray-700 hover:bg-gray-100 cursor-pointer"
+          >
+            Return to Examination
+          </button>
+          <button
+            type="button"
+            id="btn-confirm-submit"
+            class="px-5 py-2.5 navy-bg hover:bg-[#1E3A5F] text-white rounded-md text-sm font-semibold cursor-pointer"
+          >
+            FINAL SUBMIT EXAMINATION
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- PAGE 3: SUBMISSION CONFIRMATION                                       -->
+    <!-- ===================================================================== -->
+    <section id="page-confirmation" class="hidden max-w-2xl mx-auto">
+      <div class="bg-white border border-gray-300 rounded-lg p-6 sm:p-8 shadow-sm">
+        <div class="border-l-4 border-[#0F2544] bg-slate-50 p-5 rounded-r-md mb-6">
+          <h2 class="text-lg sm:text-xl font-bold navy-text tracking-tight">
+            YOUR EXAMINATION HAS BEEN SUBMITTED SUCCESSFULLY.
+          </h2>
+          <p class="text-sm sm:text-base text-gray-700 mt-2">
+            Thank you for completing the examination. Your tutor will review your answers.
+          </p>
+        </div>
+
+        <!-- Submission Metadata (No Scores, No Answer Keys) -->
+        <div class="border border-gray-200 rounded-md p-4 mb-6 text-sm space-y-2 bg-white">
+          <div class="flex justify-between border-b border-gray-100 pb-1.5">
+            <span class="text-gray-500">Submission ID:</span>
+            <span id="conf-submission-id" class="font-mono font-semibold text-gray-900"></span>
+          </div>
+          <div class="flex justify-between border-b border-gray-100 pb-1.5">
+            <span class="text-gray-500">Student Name:</span>
+            <span id="conf-student-name" class="font-semibold text-gray-900"></span>
+          </div>
+          <div class="flex justify-between border-b border-gray-100 pb-1.5">
+            <span class="text-gray-500">Class:</span>
+            <span id="conf-student-class" class="text-gray-900"></span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-gray-500">Submitted At:</span>
+            <span id="conf-submitted-at" class="text-gray-900"></span>
+          </div>
+        </div>
+
+        <!-- Tutor Review Link Box -->
+        <div class="mb-6">
+          <label for="review-link-input" class="block text-xs font-bold uppercase tracking-wider text-gray-700 mb-1.5">
+            Individual Tutor Review Link
+          </label>
+          <p class="text-xs text-gray-600 mb-2">
+            Share this link with your tutor so they can inspect your submitted answers on any device.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-2">
+            <input
+              type="text"
+              id="review-link-input"
+              readonly
+              class="flex-grow px-3 py-2 border border-gray-300 rounded-md bg-gray-50 text-xs font-mono text-gray-800 focus:outline-none"
+            />
+            <button
+              type="button"
+              id="btn-copy-link"
+              class="px-4 py-2 navy-bg hover:bg-[#1E3A5F] text-white text-xs font-semibold uppercase tracking-wider rounded-md whitespace-nowrap cursor-pointer"
+            >
+              COPY REVIEW LINK
+            </button>
+          </div>
+          <p id="copy-feedback" class="hidden text-xs text-emerald-700 font-semibold mt-1.5">
+            Review link copied to clipboard.
+          </p>
+        </div>
+
+        <!-- Backup Downloads & Tutor View Trigger -->
+        <div class="pt-4 border-t border-gray-200 flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            id="btn-download-json"
+            class="px-4 py-2.5 border border-gray-300 hover:bg-gray-50 text-gray-800 text-xs font-semibold uppercase tracking-wider rounded-md cursor-pointer"
+          >
+            Download JSON
+          </button>
+          <button
+            type="button"
+            id="btn-download-csv"
+            class="px-4 py-2.5 border border-gray-300 hover:bg-gray-50 text-gray-800 text-xs font-semibold uppercase tracking-wider rounded-md cursor-pointer"
+          >
+            Download CSV
+          </button>
+          <button
+            type="button"
+            id="btn-open-teacher-view"
+            class="sm:ml-auto px-4 py-2.5 border-2 navy-border navy-text hover:bg-slate-50 text-xs font-semibold uppercase tracking-wider rounded-md cursor-pointer"
+          >
+            Open Teacher Review View
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- PAGE 4: TEACHER REVIEW DASHBOARD                                      -->
+    <!-- ===================================================================== -->
+    <section id="page-teacher-review" class="hidden">
+      <!-- Tutor Action Toolbar (Hidden in Print) -->
+      <div class="no-print bg-slate-50 border border-gray-300 rounded-lg p-4 mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider navy-text">Tutor Manual Inspection Mode</span>
+          <p class="text-xs text-gray-600">All student responses are displayed exactly as submitted without automatic scoring.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            id="btn-print-review"
+            class="px-4 py-2 navy-bg hover:bg-[#1E3A5F] text-white text-xs font-semibold uppercase tracking-wider rounded-md cursor-pointer"
+          >
+            Print / Save as PDF
+          </button>
+          <button
+            type="button"
+            id="btn-review-json"
+            class="px-3.5 py-2 border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-xs font-semibold uppercase tracking-wider rounded-md cursor-pointer"
+          >
+            Download JSON
+          </button>
+          <button
+            type="button"
+            id="btn-review-csv"
+            class="px-3.5 py-2 border border-gray-300 bg-white hover:bg-gray-50 text-gray-800 text-xs font-semibold uppercase tracking-wider rounded-md cursor-pointer"
+          >
+            Download CSV
+          </button>
+        </div>
+      </div>
+
+      <!-- Error Alert if Link is Corrupted -->
+      <div id="review-error-box" class="hidden p-5 border border-red-300 bg-red-50 text-red-900 rounded-lg mb-6">
+        <h3 class="font-bold text-base mb-1">Unable to Load Submission</h3>
+        <p class="text-sm">The review link appears incomplete or invalid. Please request the complete review URL or the student's JSON backup file.</p>
+      </div>
+
+      <!-- Review Report Container -->
+      <div id="review-report-content" class="bg-white border border-gray-300 rounded-lg p-6 sm:p-8 shadow-sm">
+        <!-- Print Header -->
+        <div class="border-b-2 border-[#0F2544] pb-4 mb-6">
+          <h2 class="text-xl sm:text-2xl font-bold navy-text uppercase">ENGLISH GRAMMAR EXAMINATION — STUDENT ANSWER SHEET</h2>
+          <p class="text-xs sm:text-sm text-gray-600 mt-0.5">Basic English Grammar Assessment &bull; Tutor Manual Review Record</p>
+        </div>
+
+        <!-- Student Information Table -->
+        <div class="mb-8">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Student Information</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 bg-slate-50 border border-gray-200 rounded-md p-4 text-sm">
+            <div>
+              <span class="text-xs text-gray-500 block">Full Name</span>
+              <span id="rev-name" class="font-bold text-gray-900"></span>
+            </div>
+            <div>
+              <span class="text-xs text-gray-500 block">Class</span>
+              <span id="rev-class" class="font-semibold text-gray-900"></span>
+            </div>
+            <div>
+              <span class="text-xs text-gray-500 block">Examination Date</span>
+              <span id="rev-date" class="font-semibold text-gray-900"></span>
+            </div>
+            <div>
+              <span class="text-xs text-gray-500 block">Submission Time</span>
+              <span id="rev-time" class="font-semibold text-gray-900"></span>
+            </div>
+            <div>
+              <span class="text-xs text-gray-500 block">Submission ID</span>
+              <span id="rev-id" class="font-mono font-semibold text-gray-900"></span>
+            </div>
+            <div>
+              <span class="text-xs text-gray-500 block">Completion Summary</span>
+              <span id="rev-summary" class="font-semibold text-gray-900"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- PART A — MULTIPLE CHOICE REVIEW -->
+        <div class="mb-10">
+          <div class="border-b border-gray-300 pb-2 mb-4">
+            <h3 class="text-base sm:text-lg font-bold navy-text">PART A — MULTIPLE CHOICE (30 Questions)</h3>
+            <p class="text-xs text-gray-600">Displayed in the exact randomized question and option order presented to the student.</p>
+          </div>
+          <div id="rev-part-a-list" class="space-y-4">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- PART B — TRANSLATION REVIEW -->
+        <div>
+          <div class="border-b border-gray-300 pb-2 mb-4">
+            <h3 class="text-base sm:text-lg font-bold navy-text">PART B — TRANSLATION (10 Questions)</h3>
+            <p class="text-xs text-gray-600">Indonesian-to-English sentences written by the student.</p>
+          </div>
+          <div id="rev-part-b-list" class="space-y-4">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </div>
+
+      <!-- NEW: GRADING PANEL -->
+      <div class="no-print bg-white border border-gray-300 rounded-lg p-6 sm:p-8 mt-6 shadow-sm">
+        <div class="border-b border-gray-200 pb-3 mb-5">
+          <h3 class="text-lg font-bold navy-text uppercase">Submit Grade & Feedback</h3>
+          <p class="text-xs text-gray-600 mt-1">Assign scores manually and provide feedback for the student.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+          <div>
+            <label class="block text-sm font-semibold text-gray-800 mb-1.5">Part A Score (Multiple Choice)</label>
+            <input type="number" id="grade-mcq" class="w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0F2544]" placeholder="e.g., 75" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-800 mb-1.5">Part B Score (Translation)</label>
+            <input type="number" id="grade-tr" class="w-full p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0F2544]" placeholder="e.g., 25" />
+          </div>
+        </div>
+        <div class="mb-5">
+          <label class="block text-sm font-semibold text-gray-800 mb-1.5">Tutor Feedback / Comments <span class="text-gray-400 font-normal">(Optional)</span></label>
+          <textarea id="grade-feedback" rows="3" class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#0F2544]" placeholder="Write your encouraging feedback or correction notes here..."></textarea>
+        </div>
+        
+        <button type="button" id="btn-save-grade" class="px-5 py-3 navy-bg hover:bg-[#1E3A5F] text-white text-sm font-bold uppercase tracking-wider rounded-md transition-colors cursor-pointer w-full sm:w-auto">
+          Save Grade & Get Result Link
+        </button>
+
+        <div id="grade-link-container" class="hidden mt-6 p-4 border border-emerald-300 bg-emerald-50 rounded-md">
+          <p class="text-sm font-bold text-emerald-900 mb-2">Grade Saved Successfully! Share this Result Link with the student:</p>
+          <div class="flex flex-col sm:flex-row gap-2">
+            <input type="text" id="result-link-input" readonly class="flex-grow px-3 py-2 border border-emerald-300 rounded-md bg-white text-xs font-mono text-gray-800 focus:outline-none" />
+            <button type="button" id="btn-copy-result-link" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold uppercase tracking-wider rounded-md whitespace-nowrap cursor-pointer">
+              COPY LINK
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- PAGE 5: STUDENT RESULT DASHBOARD                                      -->
+    <!-- ===================================================================== -->
+    <section id="page-student-result" class="hidden max-w-3xl mx-auto">
+      <div class="bg-white border border-gray-300 rounded-lg p-6 sm:p-10 shadow-sm">
+        <div class="text-center mb-8 border-b border-gray-200 pb-6">
+          <h2 class="text-2xl sm:text-3xl font-bold navy-text uppercase tracking-tight">Examination Result</h2>
+          <p class="text-sm sm:text-base text-gray-600 mt-1">Basic English Grammar Assessment</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-6 mb-8">
+          <div class="md:col-span-3 bg-slate-50 p-5 rounded-md border border-gray-200 flex flex-col justify-center">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-500 mb-3">Student Information</h3>
+            <p class="font-bold text-lg text-gray-900 leading-tight" id="res-name"></p>
+            <p class="text-sm text-gray-700 mt-1" id="res-class"></p>
+            <div class="mt-4 pt-4 border-t border-gray-200">
+              <p class="text-xs text-gray-500">Submitted On: <span id="res-time" class="font-medium text-gray-800"></span></p>
+            </div>
+          </div>
+          
+          <div class="md:col-span-2 bg-[#0F2544] p-5 rounded-md border border-[#0F2544] text-white flex flex-col justify-center items-center text-center shadow-inner">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">Total Score</h3>
+            <p class="text-5xl sm:text-6xl font-bold tracking-tighter" id="res-total-score">0</p>
+            <p class="text-sm text-slate-300 mt-2 font-medium">Points</p>
+          </div>
+        </div>
+
+        <div class="mb-8">
+          <h3 class="text-sm font-bold uppercase tracking-wider text-gray-800 border-b border-gray-200 pb-2 mb-4">Score Breakdown</h3>
+          <div class="flex justify-between items-center py-3 border-b border-gray-100">
+            <span class="text-sm text-gray-700 font-medium">Part A — Multiple Choice</span>
+            <span class="font-bold text-gray-900 bg-slate-100 px-3 py-1 rounded" id="res-mcq-score">-</span>
+          </div>
+          <div class="flex justify-between items-center py-3 border-b border-gray-100">
+            <span class="text-sm text-gray-700 font-medium">Part B — Translation</span>
+            <span class="font-bold text-gray-900 bg-slate-100 px-3 py-1 rounded" id="res-tr-score">-</span>
+          </div>
+        </div>
+
+        <div class="bg-blue-50 border border-blue-200 rounded-md p-5 relative overflow-hidden">
+          <div class="absolute top-0 left-0 w-1.5 h-full bg-blue-600"></div>
+          <h3 class="text-sm font-bold uppercase tracking-wider text-blue-900 mb-2 ml-2">Tutor Feedback</h3>
+          <p class="text-sm sm:text-base text-gray-800 whitespace-pre-wrap ml-2 leading-relaxed" id="res-feedback">No feedback provided.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Minimalist Footer -->
+  <footer class="border-t border-gray-200 py-4 text-center text-xs text-gray-500 no-print">
+    ENGLISH GRAMMAR EXAMINATION &bull; Basic English Grammar Assessment
+  </footer>
+
+  <!-- ======================================================================= -->
+  <!-- FIREBASE CONFIGURATION                                                  -->
+  <!-- ======================================================================= -->
+  <script>
+    // Ganti dengan konfigurasi dari akun Firebase Anda
+    const __firebase_config = {
+      apiKey: "AIzaSyXXXXXXXXXXXX",
+      authDomain: "project-anda.firebaseapp.com",
+      projectId: "project-anda",
+      storageBucket: "project-anda.appspot.com",
+      messagingSenderId: "123456789",
+      appId: "1:123456789:web:abcdef123456"
+    };
+  </script>
+
+  <!-- ======================================================================= -->
+  <!-- APPLICATION LOGIC & QUESTION BANK (VANILLA JAVASCRIPT + FIREBASE)       -->
+  <!-- ======================================================================= -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    // -------------------------------------------------------------------------
+    // 1. OPTIONAL FIREBASE FIRESTORE INITIALIZATION (FOR CROSS-DEVICE STORAGE)
+    // -------------------------------------------------------------------------
+    let db = null;
+    let auth = null;
+    let firebaseReady = false;
+    const appId = typeof __app_id !== "undefined" ? __app_id : "english-grammar-exam";
+
+    async function initFirebaseIfAvailable() {
+      try {
+        if (typeof __firebase_config !== "undefined" && __firebase_config) {
+          const config = typeof __firebase_config === "string"
+            ? JSON.parse(__firebase_config)
+            : __firebase_config;
+          if (config && config.apiKey) {
+            const app = initializeApp(config);
+            auth = getAuth(app);
+            db = getFirestore(app);
+            if (typeof __initial_auth_token !== "undefined" && __initial_auth_token) {
+              await signInWithCustomToken(auth, __initial_auth_token);
+            } else {
+              await signInAnonymously(auth);
+            }
+            firebaseReady = true;
+          }
+        }
+      } catch (err) {
+        // Fallback smoothly to URL-encoded state sharing if Firebase is not configured
+        firebaseReady = false;
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // 2. QUESTION BANK (30 MCQs across 8 Tenses + 10 Translations)
+    // Note: No answer keys are stored or rendered anywhere in the interface.
+    // -------------------------------------------------------------------------
+    const MCQ_BANK = [
+      // Topic 1: Simple Present Tense (4 questions)
+      {
+        id: "MCQ01",
+        topic: "Simple Present Tense",
+        question: "My father _____ to the office by bus every morning.",
+        options: ["go", "goes", "going", "is go"]
+      },
+      {
+        id: "MCQ02",
+        topic: "Simple Present Tense",
+        question: "_____ your sister like drinking coffee without sugar?",
+        options: ["Do", "Does", "Is", "Has"]
+      },
+      {
+        id: "MCQ03",
+        topic: "Simple Present Tense",
+        question: "They _____ watch television on weekday nights because they study.",
+        options: ["doesn't", "don't", "aren't", "haven't"]
+      },
+      {
+        id: "MCQ04",
+        topic: "Simple Present Tense",
+        question: "Which sentence has the correct Simple Present structure?",
+        options: [
+          "She always arrives at school on time.",
+          "She always arrive at school on time.",
+          "She is always arrive at school on time.",
+          "She always arriving at school on time."
+        ]
+      },
+
+      // Topic 2: Present Continuous Tense (4 questions)
+      {
+        id: "MCQ05",
+        topic: "Present Continuous Tense",
+        question: "Please be quiet. The baby _____ in the bedroom right now.",
+        options: ["sleeps", "is sleeping", "slept", "has slept"]
+      },
+      {
+        id: "MCQ06",
+        topic: "Present Continuous Tense",
+        question: "Look at those dark clouds! Why _____ you _____ your umbrella?",
+        options: ["are / taking", "do / taking", "is / take", "have / taking"]
+      },
+      {
+        id: "MCQ07",
+        topic: "Present Continuous Tense",
+        question: "We _____ dinner at home tonight; we are eating at a restaurant.",
+        options: ["don't cook", "aren't cooking", "isn't cooking", "wasn't cooking"]
+      },
+      {
+        id: "MCQ08",
+        topic: "Present Continuous Tense",
+        question: "Listen! Someone _____ at the front door.",
+        options: ["knocks", "is knocking", "knocked", "was knocking"]
+      },
+
+      // Topic 3: Simple Past Tense (4 questions)
+      {
+        id: "MCQ09",
+        topic: "Simple Past Tense",
+        question: "We _____ our grandparents in the village last weekend.",
+        options: ["visit", "visited", "visiting", "have visited"]
+      },
+      {
+        id: "MCQ10",
+        topic: "Simple Past Tense",
+        question: "Rina _____ come to the English class yesterday because she was sick.",
+        options: ["doesn't", "didn't", "wasn't", "hasn't"]
+      },
+      {
+        id: "MCQ11",
+        topic: "Simple Past Tense",
+        question: "Where _____ you _____ that blue jacket two days ago?",
+        options: ["did / buy", "did / bought", "were / buy", "do / bought"]
+      },
+      {
+        id: "MCQ12",
+        topic: "Simple Past Tense",
+        question: "He _____ his house keys on the table before he left for work.",
+        options: ["put", "puts", "putting", "was put"]
+      },
+
+      // Topic 4: Past Continuous Tense (4 questions)
+      {
+        id: "MCQ13",
+        topic: "Past Continuous Tense",
+        question: "At 8 o'clock last night, my brother and I _____ our homework.",
+        options: ["was doing", "were doing", "are doing", "did"]
+      },
+      {
+        id: "MCQ14",
+        topic: "Past Continuous Tense",
+        question: "Sarah _____ her bicycle when a cat suddenly ran across the street.",
+        options: ["rode", "was riding", "is riding", "has ridden"]
+      },
+      {
+        id: "MCQ15",
+        topic: "Past Continuous Tense",
+        question: "What _____ they _____ when the teacher entered the classroom?",
+        options: ["were / talking about", "was / talking about", "did / talking about", "are / talking about"]
+      },
+      {
+        id: "MCQ16",
+        topic: "Past Continuous Tense",
+        question: "I _____ sleeping when you called me; I was reading a book.",
+        options: ["didn't", "wasn't", "weren't", "am not"]
+      },
+
+      // Topic 5: Present Perfect Tense (4 questions)
+      {
+        id: "MCQ17",
+        topic: "Present Perfect Tense",
+        question: "My mother _____ already _____ lunch for the whole family.",
+        options: ["has / cooked", "have / cooked", "has / cook", "is / cooked"]
+      },
+      {
+        id: "MCQ18",
+        topic: "Present Perfect Tense",
+        question: "_____ you ever _____ to Bali with your family?",
+        options: ["Have / been", "Has / been", "Did / been", "Are / been"]
+      },
+      {
+        id: "MCQ19",
+        topic: "Present Perfect Tense",
+        question: "David _____ finished his science project yet.",
+        options: ["haven't", "hasn't", "didn't", "isn't"]
+      },
+      {
+        id: "MCQ20",
+        topic: "Present Perfect Tense",
+        question: "We _____ in this neighborhood since 2019.",
+        options: ["live", "lived", "have lived", "are living"]
+      },
+
+      // Topic 6: Present Perfect Continuous Tense (4 questions)
+      {
+        id: "MCQ21",
+        topic: "Present Perfect Continuous Tense",
+        question: "She _____ for the bus at that stop for forty minutes.",
+        options: ["is waiting", "has been waiting", "have been waiting", "waited"]
+      },
+      {
+        id: "MCQ22",
+        topic: "Present Perfect Continuous Tense",
+        question: "How long _____ your brother _____ English at this course?",
+        options: ["has / been studying", "have / been studying", "is / been studying", "does / studying"]
+      },
+      {
+        id: "MCQ23",
+        topic: "Present Perfect Continuous Tense",
+        question: "My hands are dirty because I _____ in the garden all morning.",
+        options: ["have been working", "has been working", "was working", "work"]
+      },
+      {
+        id: "MCQ24",
+        topic: "Present Perfect Continuous Tense",
+        question: "They have been playing badminton _____ 4:00 PM.",
+        options: ["for", "since", "during", "ago"]
+      },
+
+      // Topic 7: Future with Will (3 questions)
+      {
+        id: "MCQ25",
+        topic: "Future with Will",
+        question: "Those bags look very heavy. I _____ you carry them to the car.",
+        options: ["will help", "will helping", "am help", "helped"]
+      },
+      {
+        id: "MCQ26",
+        topic: "Future with Will",
+        question: "I promise I _____ late for our meeting tomorrow morning.",
+        options: ["won't be", "don't be", "not will be", "wasn't be"]
+      },
+      {
+        id: "MCQ27",
+        topic: "Future with Will",
+        question: "_____ you _____ me a text message when you arrive at the station?",
+        options: ["Will / send", "Will / sends", "Are / send", "Do / will send"]
+      },
+
+      // Topic 8: Future with Be Going To (3 questions)
+      {
+        id: "MCQ28",
+        topic: "Future with Be Going To",
+        question: "We bought the tickets yesterday. We _____ a movie tonight.",
+        options: ["are going to watch", "is going to watch", "will watching", "going to watch"]
+      },
+      {
+        id: "MCQ29",
+        topic: "Future with Be Going To",
+        question: "Look at the wet floor! That boy _____ slip if he runs too fast.",
+        options: ["is going to", "are going to", "going to", "will be"]
+      },
+      {
+        id: "MCQ30",
+        topic: "Future with Be Going To",
+        question: "What _____ your sister _____ study at university next year?",
+        options: ["is / going to", "are / going to", "does / going to", "will / going to"]
+      }
+    ];
+
+    const TRANSLATION_BANK = [
+      // Category A: Past Continuous — Two Events Concept (5 Questions)
+      {
+        id: "TR01",
+        category: "Past Continuous — Two Events Concept",
+        indonesian: "Saya sedang belajar ketika ibu saya menelepon."
+      },
+      {
+        id: "TR02",
+        category: "Past Continuous — Two Events Concept",
+        indonesian: "Mereka sedang bermain sepak bola ketika hujan mulai turun."
+      },
+      {
+        id: "TR03",
+        category: "Past Continuous — Two Events Concept",
+        indonesian: "Ketika guru masuk ke kelas, kami sedang berbicara."
+      },
+      {
+        id: "TR04",
+        category: "Past Continuous — Two Events Concept",
+        indonesian: "Dia (perempuan) sedang memasak makan malam ketika listrik padam."
+      },
+      {
+        id: "TR05",
+        category: "Past Continuous — Two Events Concept",
+        indonesian: "Saya sedang berjalan ke sekolah ketika saya bertemu teman lama saya."
+      },
+
+      // Category B: Present Perfect Continuous (5 Questions)
+      {
+        id: "TR06",
+        category: "Present Perfect Continuous",
+        indonesian: "Saya sudah belajar bahasa Inggris selama dua jam."
+      },
+      {
+        id: "TR07",
+        category: "Present Perfect Continuous",
+        indonesian: "Dia (laki-laki) sudah bekerja di perusahaan ini sejak tahun 2022."
+      },
+      {
+        id: "TR08",
+        category: "Present Perfect Continuous",
+        indonesian: "Mereka sudah menunggu bus selama tiga puluh menit."
+      },
+      {
+        id: "TR09",
+        category: "Present Perfect Continuous",
+        indonesian: "Hujan sudah turun sejak pagi hari."
+      },
+      {
+        id: "TR10",
+        category: "Present Perfect Continuous",
+        indonesian: "Kami sudah berlatih untuk ujian ini selama satu minggu."
+      }
+    ];
+
+    // -------------------------------------------------------------------------
+    // 3. APPLICATION STATE & UTILITY FUNCTIONS
+    // -------------------------------------------------------------------------
+    const EXAM_DURATION_SECONDS = 90 * 60; // 01:30:00 (5400 seconds)
+    const OPTION_LETTERS = ["A", "B", "C", "D"];
+
+    let examState = {
+      submissionId: "",
+      studentName: "",
+      studentClass: "",
+      examDate: "",
+      startedAt: null,
+      submittedAt: null,
+      isSubmitted: false,
+      remainingSeconds: EXAM_DURATION_SECONDS,
+      currentIndex: 0, // 0 to 39
+      mcqs: [],         // Randomized MCQs with randomized options
+      translations: [], // Randomized Translation items
+      mcqAnswers: {},   // { [questionId]: selectedOptionIndex (0..3) }
+      trAnswers: {}     // { [questionId]: typedString }
+    };
+
+    let timerInterval = null;
+    let latestSubmissionPayload = null;
+
+    // Escape HTML safely before rendering any user input
+    function escapeHTML(str) {
+      if (str === null || str === undefined) return "";
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // Fisher-Yates unbiased array shuffle
+    function shuffleArray(array) {
+      const copy = [...array];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    // Generate unique submission ID
+    function generateSubmissionId() {
+      const now = new Date();
+      const datePart = now.toISOString().slice(0, 10).replace(/-/g, "");
+      const randPart = Math.random().toString(36).substring(2, 8).toUpperCase();
+      return `EGE-${datePart}-${randPart}`;
+    }
+
+    // Format readable date
+    function formatCurrentDate() {
+      const now = new Date();
+      return now.toLocaleDateString("en-GB", {
+        weekday: "long",
+        day: "2-digit",
+        month: "long",
+        year: "numeric"
+      });
+    }
+
+    // Format HH:MM:SS timer
+    function formatTime(totalSec) {
+      const safeSec = Math.max(0, totalSec);
+      const hrs = Math.floor(safeSec / 3600);
+      const mins = Math.floor((safeSec % 3600) / 60);
+      const secs = safeSec % 60;
+      return [
+        String(hrs).padStart(2, "0"),
+        String(mins).padStart(2, "0"),
+        String(secs).padStart(2, "0")
+      ].join(":");
+    }
+
+    // Encode/Decode submission data into compact URL-safe Base64 string
+    // Stores question IDs, option permutations, and student answers compactly
+    // so review links work reliably across devices without a server.
+    function encodeSubmissionToToken(payload) {
+      const compact = {
+        v: 1,
+        id: payload.submissionId,
+        n: payload.studentName,
+        c: payload.studentClass,
+        d: payload.examDate,
+        t: payload.submittedAt,
+        m: payload.mcqReview.map((item) => ({
+          i: item.id,
+          o: item.optionOrder, // e.g., [2, 0, 3, 1] mapping displayed A-D to original option indices
+          s: item.selectedIndex // 0..3 or -1
+        })),
+        r: payload.translationReview.map((item) => ({
+          i: item.id,
+          a: item.studentTranslation
+        }))
+      };
+      
+      if (payload.grade) {
+        compact.g = {
+          m: payload.grade.mcqScore,
+          t: payload.grade.trScore,
+          f: payload.grade.feedback
+        };
+      }
+      
+      const jsonStr = JSON.stringify(compact);
+      const bytes = new TextEncoder().encode(jsonStr);
+      let binStr = "";
+      for (let i = 0; i < bytes.length; i++) {
+        binStr += String.fromCharCode(bytes[i]);
+      }
+      return btoa(binStr).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+    }
+
+    function decodeSubmissionFromToken(token) {
+      try {
+        let base64 = token.replace(/-/g, "+").replace(/_/g, "/");
+        while (base64.length % 4 !== 0) {
+          base64 += "=";
+        }
+        const binStr = atob(base64);
+        const bytes = new Uint8Array(binStr.length);
+        for (let i = 0; i < binStr.length; i++) {
+          bytes[i] = binStr.charCodeAt(i);
+        }
+        const jsonStr = new TextDecoder().decode(bytes);
+        const compact = JSON.parse(jsonStr);
+        if (!compact || compact.v !== 1 || !Array.isArray(compact.m) || !Array.isArray(compact.r)) {
+          return null;
+        }
+
+        const mcqMap = Object.fromEntries(MCQ_BANK.map((q) => [q.id, q]));
+        const trMap = Object.fromEntries(TRANSLATION_BANK.map((q) => [q.id, q]));
+
+        const mcqReview = compact.m.map((entry, idx) => {
+          const orig = mcqMap[entry.i];
+          if (!orig) return null;
+          const orderedOptions = entry.o.map((optIdx) => orig.options[optIdx]);
+          const selectedIdx = typeof entry.s === "number" ? entry.s : -1;
+          return {
+            number: idx + 1,
+            id: orig.id,
+            topic: orig.topic,
+            question: orig.question,
+            optionOrder: entry.o,
+            options: orderedOptions,
+            selectedIndex: selectedIdx,
+            selectedLetter: selectedIdx >= 0 && selectedIdx < 4 ? OPTION_LETTERS[selectedIdx] : null,
+            selectedText: selectedIdx >= 0 && selectedIdx < 4 ? orderedOptions[selectedIdx] : null
+          };
+        }).filter(Boolean);
+
+        const translationReview = compact.r.map((entry, idx) => {
+          const orig = trMap[entry.i];
+          if (!orig) return null;
+          return {
+            number: 31 + idx,
+            id: orig.id,
+            category: orig.category,
+            indonesian: orig.indonesian,
+            studentTranslation: entry.a || ""
+          };
+        }).filter(Boolean);
+
+        return {
+          submissionId: compact.id,
+          studentName: compact.n,
+          studentClass: compact.c || "Not Specified",
+          examDate: compact.d,
+          submittedAt: compact.t,
+          mcqReview,
+          translationReview,
+          grade: compact.g ? {
+            mcqScore: compact.g.m,
+            trScore: compact.g.t,
+            feedback: compact.g.f
+          } : null
+        };
+      } catch (e) {
+        return null;
+      }
+    }
+
+    // Build full review payload from current examState
+    function buildSubmissionPayload() {
+      const mcqReview = examState.mcqs.map((q, idx) => {
+        const selectedIdx = examState.mcqAnswers[q.id] !== undefined ? examState.mcqAnswers[q.id] : -1;
+        return {
+          number: idx + 1,
+          id: q.id,
+          topic: q.topic,
+          question: q.question,
+          optionOrder: q.optionOrder,
+          options: q.shuffledOptions,
+          selectedIndex: selectedIdx,
+          selectedLetter: selectedIdx >= 0 ? OPTION_LETTERS[selectedIdx] : null,
+          selectedText: selectedIdx >= 0 ? q.shuffledOptions[selectedIdx] : null
+        };
+      });
+
+      const translationReview = examState.translations.map((q, idx) => {
+        const ans = (examState.trAnswers[q.id] || "").trim();
+        return {
+          number: 31 + idx,
+          id: q.id,
+          category: q.category,
+          indonesian: q.indonesian,
+          studentTranslation: ans
+        };
+      });
+
+      return {
+        submissionId: examState.submissionId,
+        studentName: examState.studentName,
+        studentClass: examState.studentClass || "Not Specified",
+        examDate: examState.examDate,
+        submittedAt: examState.submittedAt,
+        mcqReview,
+        translationReview
+      };
+    }
+
+    // -------------------------------------------------------------------------
+    // 4. VIEW SWITCHING
+    // -------------------------------------------------------------------------
+    function showPage(pageId) {
+      const pages = ["page-registration", "page-exam", "page-confirmation", "page-teacher-review", "page-student-result"];
+      pages.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          if (id === pageId) {
+            el.classList.remove("hidden");
+          } else {
+            el.classList.add("hidden");
+          }
+        }
+      });
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+
+    // -------------------------------------------------------------------------
+    // 5. REGISTRATION & INITIALIZATION
+    // -------------------------------------------------------------------------
+    function initRegistrationPage() {
+      const dateField = document.getElementById("exam-date");
+      if (dateField) dateField.value = formatCurrentDate();
+
+      document.getElementById("registration-form").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nameInput = document.getElementById("student-name").value.trim();
+        const classInput = document.getElementById("student-class").value.trim();
+        const errorBox = document.getElementById("reg-error");
+
+        if (!nameInput) {
+          errorBox.classList.remove("hidden");
+          return;
+        }
+
+        errorBox.classList.add("hidden");
+        
+        // Initialize State
+        examState.submissionId = generateSubmissionId();
+        examState.studentName = nameInput;
+        examState.studentClass = classInput;
+        examState.examDate = document.getElementById("exam-date").value;
+        examState.startedAt = new Date().toLocaleTimeString("en-GB");
+        
+        // Randomize questions
+        examState.mcqs = shuffleArray(MCQ_BANK).map(q => {
+          const indices = [0, 1, 2, 3];
+          const shuffledIndices = shuffleArray(indices);
+          return {
+            ...q,
+            optionOrder: shuffledIndices,
+            shuffledOptions: shuffledIndices.map(idx => q.options[idx])
+          };
+        });
+        
+        examState.translations = shuffleArray(TRANSLATION_BANK);
+        examState.currentIndex = 0;
+        
+        startExamination();
+      });
+    }
+
+    // -------------------------------------------------------------------------
+    // 6. EXAM EXECUTION & TIMER
+    // -------------------------------------------------------------------------
+    function startExamination() {
+      document.getElementById("exam-display-name").textContent = examState.studentName;
+      if (examState.studentClass) {
+        document.getElementById("exam-display-class").textContent = `(${examState.studentClass})`;
+      }
+      
+      buildNavigationGrid();
+      renderCurrentQuestion();
+      updateProgressIndicator();
+      
+      showPage("page-exam");
+      
+      timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    function updateTimer() {
+      if (examState.isSubmitted) {
+        clearInterval(timerInterval);
+        return;
+      }
+      
+      examState.remainingSeconds--;
+      
+      if (examState.remainingSeconds <= 300 && examState.remainingSeconds > 0) {
+        document.getElementById("timer-warning-banner").classList.remove("hidden");
+      }
+      
+      if (examState.remainingSeconds <= 0) {
+        clearInterval(timerInterval);
+        document.getElementById("exam-timer").textContent = "00:00:00";
+        finalizeExaminationSubmission();
+      } else {
+        document.getElementById("exam-timer").textContent = formatTime(examState.remainingSeconds);
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // 7. QUESTION RENDERING & NAVIGATION
+    // -------------------------------------------------------------------------
+    function renderCurrentQuestion() {
+      const container = document.getElementById("question-container");
+      const idx = examState.currentIndex;
+      
+      document.getElementById("question-number-label").textContent = `Question ${idx + 1} of 40`;
+      
+      const prevBtn = document.getElementById("btn-prev-question");
+      const nextBtn = document.getElementById("btn-next-question");
+      
+      prevBtn.disabled = idx === 0;
+      nextBtn.innerHTML = idx === 39 ? "Review &amp; Submit" : "Next &rarr;";
+      
+      if (idx < 30) {
+        // Render MCQ
+        const q = examState.mcqs[idx];
+        document.getElementById("question-section-badge").textContent = "PART A — MULTIPLE CHOICE";
+        document.getElementById("question-topic-subtitle").textContent = `Topic: ${q.topic}`;
+        
+        const selectedIdx = examState.mcqAnswers[q.id];
+        
+        let optionsHTML = q.shuffledOptions.map((opt, i) => {
+          const isChecked = selectedIdx === i;
+          return `
+            <label class="flex items-center gap-3 p-3 sm:p-4 border rounded-md cursor-pointer transition-colors ${isChecked ? 'navy-border bg-slate-50' : 'border-gray-200 hover:bg-gray-50'}">
+              <input type="radio" name="mcq-${q.id}" value="${i}" class="w-5 h-5 text-[#0F2544] focus:ring-[#0F2544]" ${isChecked ? 'checked' : ''} onchange="handleMCQSelection('${q.id}', ${i})">
+              <span class="font-bold text-gray-700 w-5">${OPTION_LETTERS[i]}.</span>
+              <span class="text-sm sm:text-base text-gray-800">${escapeHTML(opt)}</span>
+            </label>
+          `;
+        }).join("");
+        
+        container.innerHTML = `
+          <h3 class="text-lg sm:text-xl font-bold navy-text mb-6">${escapeHTML(q.question)}</h3>
+          <div class="space-y-3">
+            ${optionsHTML}
+          </div>
+        `;
+      } else {
+        // Render Translation
+        const q = examState.translations[idx - 30];
+        document.getElementById("question-section-badge").textContent = "PART B — TRANSLATION";
+        document.getElementById("question-topic-subtitle").textContent = `Category: ${q.category}`;
+        
+        const currentAns = examState.trAnswers[q.id] || "";
+        
+        container.innerHTML = `
+          <div class="mb-5 p-4 bg-slate-50 border border-slate-200 rounded-md">
+            <span class="text-xs uppercase tracking-wider text-gray-500 block mb-1">Translate this sentence to English:</span>
+            <p class="text-base sm:text-lg font-bold text-gray-900">${escapeHTML(q.indonesian)}</p>
+          </div>
+          <div>
+            <textarea 
+              id="tr-input-${q.id}"
+              rows="4" 
+              class="w-full p-4 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#0F2544] focus:border-[#0F2544] text-base"
+              placeholder="Type your English translation here..."
+              oninput="handleTranslationInput('${q.id}', this.value)"
+            >${escapeHTML(currentAns)}</textarea>
+          </div>
+        `;
+      }
+      
+      updateNavigationGridStyles();
+    }
+    
+    // Global handlers for inputs
+    window.handleMCQSelection = function(qId, selectedIdx) {
+      examState.mcqAnswers[qId] = selectedIdx;
+      updateProgressIndicator();
+      updateNavigationGridStyles();
+    };
+    
+    window.handleTranslationInput = function(qId, value) {
+      examState.trAnswers[qId] = value;
+      updateProgressIndicator();
+      updateNavigationGridStyles();
+    };
+
+    function buildNavigationGrid() {
+      const gridA = document.getElementById("nav-grid-part-a");
+      const gridB = document.getElementById("nav-grid-part-b");
+      
+      gridA.innerHTML = "";
+      gridB.innerHTML = "";
+      
+      for (let i = 0; i < 40; i++) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "nav-btn w-full aspect-square flex items-center justify-center text-xs font-semibold rounded border transition-colors cursor-pointer";
+        btn.textContent = i + 1;
+        btn.onclick = () => {
+          if (!examState.isSubmitted) {
+            examState.currentIndex = i;
+            renderCurrentQuestion();
+          }
+        };
+        
+        if (i < 30) {
+          gridA.appendChild(btn);
+        } else {
+          gridB.appendChild(btn);
+        }
+      }
+    }
+
+    function updateNavigationGridStyles() {
+      const btns = document.querySelectorAll(".nav-btn");
+      btns.forEach((btn, i) => {
+        btn.className = "nav-btn w-full aspect-square flex items-center justify-center text-xs font-semibold rounded border transition-colors cursor-pointer";
+        
+        const isCurrent = examState.currentIndex === i;
+        let isAnswered = false;
+        
+        if (i < 30) {
+          const qId = examState.mcqs[i].id;
+          isAnswered = examState.mcqAnswers[qId] !== undefined;
+        } else {
+          const qId = examState.translations[i - 30].id;
+          isAnswered = (examState.trAnswers[qId] || "").trim().length > 0;
+        }
+        
+        if (isCurrent) {
+          btn.classList.add("border-2", "border-[#0F2544]", "bg-slate-100", "text-[#0F2544]");
+        } else if (isAnswered) {
+          btn.classList.add("navy-bg", "text-white", "border-[#0F2544]");
+        } else {
+          btn.classList.add("bg-white", "border-gray-300", "text-gray-700", "hover:bg-gray-50");
+        }
+      });
+    }
+
+    function updateProgressIndicator() {
+      const mcqCount = Object.keys(examState.mcqAnswers).length;
+      let trCount = 0;
+      Object.values(examState.trAnswers).forEach(val => {
+        if (val.trim().length > 0) trCount++;
+      });
+      
+      const totalAnswered = mcqCount + trCount;
+      document.getElementById("exam-progress-text").textContent = `${totalAnswered} / 40 Answered`;
+      
+      const pct = (totalAnswered / 40) * 100;
+      document.getElementById("exam-progress-bar").style.width = `${pct}%`;
+      
+      return totalAnswered;
+    }
+
+    // -------------------------------------------------------------------------
+    // 8. REVIEW MODAL & SUBMISSION
+    // -------------------------------------------------------------------------
+    function openReviewModal() {
+      const totalAnswered = updateProgressIndicator();
+      
+      document.getElementById("modal-answered-count").textContent = totalAnswered;
+      document.getElementById("modal-unanswered-count").textContent = 40 - totalAnswered;
+      
+      const modalGridA = document.getElementById("modal-grid-a");
+      const modalGridB = document.getElementById("modal-grid-b");
+      
+      modalGridA.innerHTML = "";
+      modalGridB.innerHTML = "";
+      
+      for (let i = 0; i < 40; i++) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        
+        let isAnswered = false;
+        if (i < 30) {
+          const qId = examState.mcqs[i].id;
+          isAnswered = examState.mcqAnswers[qId] !== undefined;
+        } else {
+          const qId = examState.translations[i - 30].id;
+          isAnswered = (examState.trAnswers[qId] || "").trim().length > 0;
+        }
+        
+        btn.className = `w-full aspect-square flex items-center justify-center text-xs font-semibold rounded border cursor-pointer ${
+          isAnswered ? "navy-bg text-white border-[#0F2544]" : "bg-white border-red-300 text-red-700"
+        }`;
+        
+        btn.textContent = i + 1;
+        btn.onclick = () => {
+          document.getElementById("review-modal").classList.add("hidden");
+          examState.currentIndex = i;
+          renderCurrentQuestion();
+        };
+        
+        if (i < 30) {
+          modalGridA.appendChild(btn);
+        } else {
+          modalGridB.appendChild(btn);
+        }
+      }
+      
+      document.getElementById("review-modal").classList.remove("hidden");
+    }
+
+    async function finalizeExaminationSubmission() {
+      document.getElementById("review-modal").classList.add("hidden");
+      clearInterval(timerInterval);
+      examState.isSubmitted = true;
+      examState.submittedAt = new Date().toLocaleTimeString("en-GB");
+      
+      const payload = buildSubmissionPayload();
+      latestSubmissionPayload = payload;
+      
+      // Attempt to save to Firebase if active
+      if (firebaseReady && db) {
+        try {
+          const docRef = doc(db, "artifacts", appId, "public", "data", "exam_submissions", payload.submissionId);
+          await setDoc(docRef, payload);
+        } catch (err) {
+          console.error("Firebase save failed, fallback to local link", err);
+        }
+      }
+      
+      // Populate Confirmation Page
+      document.getElementById("conf-submission-id").textContent = payload.submissionId;
+      document.getElementById("conf-student-name").textContent = payload.studentName;
+      document.getElementById("conf-student-class").textContent = payload.studentClass;
+      document.getElementById("conf-submitted-at").textContent = payload.submittedAt;
+      
+      // Generate Review Link
+      const baseUrl = window.location.href.split("?")[0].split("#")[0];
+      let reviewUrl = "";
+      
+      if (firebaseReady && db) {
+         // Firebase route - short ID
+         reviewUrl = `${baseUrl}?sid=${encodeURIComponent(payload.submissionId)}`;
+      } else {
+         // Local route - encoded token
+         const encodedToken = encodeSubmissionToToken(payload);
+         reviewUrl = `${baseUrl}?review=${encodedToken}`;
+      }
+      
+      document.getElementById("review-link-input").value = reviewUrl;
+      
+      showPage("page-confirmation");
+    }
+
+    function exportPayloadAsJSON(payload) {
+      if (!payload) return;
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(payload, null, 2));
+      const downloadAnchorNode = document.createElement('a');
+      downloadAnchorNode.setAttribute("href", dataStr);
+      downloadAnchorNode.setAttribute("download", `exam_submission_${payload.submissionId}.json`);
+      document.body.appendChild(downloadAnchorNode);
+      downloadAnchorNode.click();
+      downloadAnchorNode.remove();
+    }
+
+    function exportPayloadAsCSV(payload) {
+      if (!payload) return;
+      
+      let csvContent = "data:text/csv;charset=utf-8,";
+      csvContent += "Type,QuestionNumber,QuestionID,OriginalQuestion,SelectedOptionLetter,SelectedOptionText,StudentTranslation\n";
+      
+      payload.mcqReview.forEach(q => {
+         const escQ = `"${(q.question || "").replace(/"/g, '""')}"`;
+         const escSelected = `"${(q.selectedText || "").replace(/"/g, '""')}"`;
+         csvContent += `MCQ,${q.number},${q.id},${escQ},${q.selectedLetter || ""},${escSelected},\n`;
+      });
+      
+      payload.translationReview.forEach(q => {
+         const escQ = `"${(q.indonesian || "").replace(/"/g, '""')}"`;
+         const escAns = `"${(q.studentTranslation || "").replace(/"/g, '""')}"`;
+         csvContent += `Translation,${q.number},${q.id},${escQ},,,${escAns}\n`;
+      });
+      
+      const downloadAnchorNode = document.createElement('a');
+      downloadAnchorNode.setAttribute("href", encodeURI(csvContent));
+      downloadAnchorNode.setAttribute("download", `exam_submission_${payload.submissionId}.csv`);
+      document.body.appendChild(downloadAnchorNode);
+      downloadAnchorNode.click();
+      downloadAnchorNode.remove();
+    }
+
+    // -------------------------------------------------------------------------
+    // 9. PAGE 4: TEACHER REVIEW DASHBOARD RENDERING & GRADING
+    // -------------------------------------------------------------------------
+    function renderTeacherReviewDashboard(payload) {
+      showPage("page-teacher-review");
+      const errorBox = document.getElementById("review-error-box");
+      const reportContent = document.getElementById("review-report-content");
+
+      if (!payload) {
+        errorBox.classList.remove("hidden");
+        reportContent.classList.add("hidden");
+        return;
+      }
+
+      latestSubmissionPayload = payload;
+      errorBox.classList.add("hidden");
+      reportContent.classList.remove("hidden");
+
+      // Header candidate info
+      document.getElementById("header-student-info").textContent = `Tutor Review: ${payload.studentName}`;
+      document.getElementById("header-meta").classList.remove("hidden");
+
+      // Student Info Grid
+      document.getElementById("rev-name").textContent = payload.studentName;
+      document.getElementById("rev-class").textContent = payload.studentClass;
+      document.getElementById("rev-date").textContent = payload.examDate;
+      document.getElementById("rev-time").textContent = payload.submittedAt;
+      document.getElementById("rev-id").textContent = payload.submissionId;
+
+      const mcqAnswered = payload.mcqReview.filter((q) => q.selectedIndex >= 0).length;
+      const trAnswered = payload.translationReview.filter((q) => q.studentTranslation.length > 0).length;
+      document.getElementById("rev-summary").textContent =
+        `Part A: ${mcqAnswered}/30 Answered • Part B: ${trAnswered}/10 Answered`;
+
+      // Render Part A — Multiple Choice (No answer keys, no correctness badges)
+      const partAContainer = document.getElementById("rev-part-a-list");
+      partAContainer.innerHTML = payload.mcqReview.map((q) => {
+        const isUnanswered = q.selectedIndex < 0;
+        const optionsMarkup = q.options.map((optText, i) => {
+          const letter = OPTION_LETTERS[i];
+          const isSelected = q.selectedIndex === i;
+          return `
+            <div class="flex items-start gap-2.5 px-3 py-2 rounded text-sm ${
+              isSelected
+                ? "bg-[#0F2544] text-white font-semibold"
+                : "bg-gray-50 text-gray-700 border border-gray-200"
+            }">
+              <span class="font-bold min-w-[20px]">${letter}.</span>
+              <span>${escapeHTML(optText)}</span>
+              ${isSelected ? '<span class="ml-auto text-[11px] uppercase tracking-wider bg-white/20 px-2 py-0.5 rounded">Selected</span>' : ""}
+            </div>
+          `;
+        }).join("");
+
+        return `
+          <div class="border border-gray-300 rounded-md p-4 print-break-inside-avoid">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider navy-text">Question ${q.number}</span>
+              ${
+                isUnanswered
+                  ? '<span class="text-xs font-bold uppercase px-2 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300">Unanswered</span>'
+                  : `<span class="text-xs font-semibold text-gray-600">Student Choice: <strong>${q.selectedLetter}</strong></span>`
+              }
+            </div>
+            <p class="text-sm sm:text-base font-semibold text-gray-900 mb-3">${escapeHTML(q.question)}</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              ${optionsMarkup}
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      // Render Part B — Translation
+      const partBContainer = document.getElementById("rev-part-b-list");
+      partBContainer.innerHTML = payload.translationReview.map((q) => {
+        const hasAnswer = q.studentTranslation && q.studentTranslation.trim().length > 0;
+        return `
+          <div class="border border-gray-300 rounded-md p-4 print-break-inside-avoid">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider navy-text">Question ${q.number}</span>
+              ${
+                hasAnswer
+                  ? '<span class="text-xs font-semibold text-gray-600">Submitted Response</span>'
+                  : '<span class="text-xs font-bold uppercase px-2 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300">Unanswered</span>'
+              }
+            </div>
+            <div class="mb-3">
+              <span class="text-xs text-gray-500 block">Original Indonesian Sentence:</span>
+              <p class="text-sm font-medium text-gray-800">${escapeHTML(q.indonesian)}</p>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 rounded p-3">
+              <span class="text-xs text-gray-500 block mb-1">Student's English Translation:</span>
+              <p class="text-sm sm:text-base font-semibold text-gray-900 whitespace-pre-wrap">${
+                hasAnswer ? escapeHTML(q.studentTranslation) : '<span class="italic text-gray-400 font-normal">No translation provided.</span>'
+              }</p>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      // Pre-fill grading panel if already graded
+      if (payload.grade) {
+        document.getElementById("grade-mcq").value = payload.grade.mcqScore || "";
+        document.getElementById("grade-tr").value = payload.grade.trScore || "";
+        document.getElementById("grade-feedback").value = payload.grade.feedback || "";
+        showGradeLink(payload);
+      } else {
+        document.getElementById("grade-link-container").classList.add("hidden");
+      }
+    }
+
+    function showGradeLink(payload) {
+      const baseUrl = window.location.href.split("?")[0].split("#")[0];
+      let resultUrl = "";
+      
+      if (firebaseReady && db && payload.submissionId) {
+        // Use shorter Firebase ID link if available
+        resultUrl = `${baseUrl}?sid=${encodeURIComponent(payload.submissionId)}&mode=result`;
+      } else {
+        // Fallback to updating token encoded link
+        const encodedToken = encodeSubmissionToToken(payload);
+        resultUrl = `${baseUrl}?result=${encodedToken}`;
+      }
+      
+      document.getElementById("result-link-input").value = resultUrl;
+      document.getElementById("grade-link-container").classList.remove("hidden");
+    }
+
+    // -------------------------------------------------------------------------
+    // NEW: PAGE 5 - RENDER STUDENT RESULT DASHBOARD
+    // -------------------------------------------------------------------------
+    function renderStudentResultDashboard(payload) {
+      if (!payload) return;
+      showPage("page-student-result");
+
+      document.getElementById("header-student-info").textContent = `Examination Result: ${payload.studentName}`;
+      document.getElementById("header-meta").classList.remove("hidden");
+
+      document.getElementById("res-name").textContent = payload.studentName;
+      document.getElementById("res-class").textContent = payload.studentClass;
+      document.getElementById("res-time").textContent = `${payload.examDate} at ${payload.submittedAt}`;
+
+      if (payload.grade) {
+        const mcq = Number(payload.grade.mcqScore) || 0;
+        const tr = Number(payload.grade.trScore) || 0;
+        document.getElementById("res-mcq-score").textContent = mcq;
+        document.getElementById("res-tr-score").textContent = tr;
+        document.getElementById("res-total-score").textContent = mcq + tr;
+        document.getElementById("res-feedback").textContent = payload.grade.feedback || "No additional feedback provided.";
+      } else {
+        document.getElementById("res-total-score").textContent = "N/A";
+        document.getElementById("res-feedback").textContent = "Your examination has not been graded yet. Please check back later.";
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // 10. EVENT LISTENERS & INITIAL BOOTSTRAP
+    // -------------------------------------------------------------------------
+    function bindGlobalEvents() {
+      // Exam Navigation Buttons
+      document.getElementById("btn-prev-question").addEventListener("click", () => {
+        if (examState.isSubmitted || examState.currentIndex <= 0) return;
+        examState.currentIndex -= 1;
+        renderCurrentQuestion();
+        updateNavigationGridStyles();
+      });
+
+      document.getElementById("btn-next-question").addEventListener("click", () => {
+        if (examState.isSubmitted) return;
+        if (examState.currentIndex < 39) {
+          examState.currentIndex += 1;
+          renderCurrentQuestion();
+          updateNavigationGridStyles();
+        } else {
+          openReviewModal();
+        }
+      });
+
+      document.getElementById("btn-clear-answer").addEventListener("click", () => {
+        if (examState.isSubmitted) return;
+        const idx = examState.currentIndex;
+        if (idx < 30) {
+          const q = examState.mcqs[idx];
+          delete examState.mcqAnswers[q.id];
+        } else {
+          const q = examState.translations[idx - 30];
+          delete examState.trAnswers[q.id];
+        }
+        renderCurrentQuestion();
+        updateProgressIndicator();
+      });
+
+      // Review Modal Controls
+      document.getElementById("btn-open-review-modal").addEventListener("click", openReviewModal);
+      document.getElementById("btn-sidebar-review").addEventListener("click", openReviewModal);
+      document.getElementById("btn-close-modal").addEventListener("click", () => {
+        document.getElementById("review-modal").classList.add("hidden");
+      });
+      document.getElementById("btn-cancel-submit").addEventListener("click", () => {
+        document.getElementById("review-modal").classList.add("hidden");
+      });
+      document.getElementById("btn-confirm-submit").addEventListener("click", finalizeExaminationSubmission);
+
+      // Page 3 Confirmation Actions
+      document.getElementById("btn-copy-link").addEventListener("click", () => {
+        const input = document.getElementById("review-link-input");
+        input.select();
+        input.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        const feedback = document.getElementById("copy-feedback");
+        feedback.classList.remove("hidden");
+        setTimeout(() => feedback.classList.add("hidden"), 3000);
+      });
+
+      document.getElementById("btn-download-json").addEventListener("click", () => {
+        exportPayloadAsJSON(latestSubmissionPayload);
+      });
+
+      document.getElementById("btn-download-csv").addEventListener("click", () => {
+        exportPayloadAsCSV(latestSubmissionPayload);
+      });
+
+      document.getElementById("btn-open-teacher-view").addEventListener("click", () => {
+        renderTeacherReviewDashboard(latestSubmissionPayload);
+      });
+
+      // Page 4 Teacher Review Actions
+      document.getElementById("btn-print-review").addEventListener("click", () => {
+        window.print();
+      });
+
+      document.getElementById("btn-review-json").addEventListener("click", () => {
+        exportPayloadAsJSON(latestSubmissionPayload);
+      });
+
+      document.getElementById("btn-review-csv").addEventListener("click", () => {
+        exportPayloadAsCSV(latestSubmissionPayload);
+      });
+
+      // Grading & Result Generation Logic
+      document.getElementById("btn-save-grade").addEventListener("click", async () => {
+        if (!latestSubmissionPayload) return;
+        
+        const btn = document.getElementById("btn-save-grade");
+        btn.textContent = "Saving...";
+        btn.disabled = true;
+
+        const mcqScore = document.getElementById("grade-mcq").value;
+        const trScore = document.getElementById("grade-tr").value;
+        const feedback = document.getElementById("grade-feedback").value;
+
+        latestSubmissionPayload.grade = {
+          mcqScore: mcqScore,
+          trScore: trScore,
+          feedback: feedback
+        };
+
+        // Save back to Firebase if active
+        if (firebaseReady && db) {
+          try {
+            const docRef = doc(db, "artifacts", appId, "public", "data", "exam_submissions", latestSubmissionPayload.submissionId);
+            await updateDoc(docRef, { grade: latestSubmissionPayload.grade });
+          } catch (err) {
+            console.error("Error updating grade in Firebase:", err);
+          }
+        }
+        
+        showGradeLink(latestSubmissionPayload);
+        btn.textContent = "Save Grade & Get Result Link";
+        btn.disabled = false;
+      });
+
+      document.getElementById("btn-copy-result-link").addEventListener("click", () => {
+        const input = document.getElementById("result-link-input");
+        input.select();
+        input.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        
+        const btn = document.getElementById("btn-copy-result-link");
+        const originalText = btn.textContent;
+        btn.textContent = "COPIED!";
+        setTimeout(() => { btn.textContent = originalText; }, 2000);
+      });
+    }
+
+    // Boot Application
+    window.addEventListener("DOMContentLoaded", async () => {
+      await initFirebaseIfAvailable();
+      bindGlobalEvents();
+
+      // Check URL parameters for Review mode or Result mode
+      const urlParams = new URLSearchParams(window.location.search);
+      const reviewToken = urlParams.get("review");
+      const resultToken = urlParams.get("result");
+      const submissionIdParam = urlParams.get("sid");
+      const modeParam = urlParams.get("mode"); // e.g., 'result'
+
+      if (submissionIdParam && firebaseReady && db) {
+        try {
+          const snap = await getDoc(doc(db, "artifacts", appId, "public", "data", "exam_submissions", submissionIdParam));
+          if (snap.exists()) {
+            if (modeParam === "result") {
+              renderStudentResultDashboard(snap.data());
+            } else {
+              renderTeacherReviewDashboard(snap.data());
+            }
+            return;
+          }
+        } catch (err) {
+          // Fall through to URL token decoding
+        }
+      }
+
+      if (reviewToken) {
+        const decodedPayload = decodeSubmissionFromToken(reviewToken);
+        renderTeacherReviewDashboard(decodedPayload);
+        return;
+      }
+
+      if (resultToken) {
+        const decodedPayload = decodeSubmissionFromToken(resultToken);
+        renderStudentResultDashboard(decodedPayload);
+        return;
+      }
+
+      // Default: Show Student Registration (Page 1)
+      initRegistrationPage();
+      showPage("page-registration");
+    });
+  </script>
+</body>
+</html>
